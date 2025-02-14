@@ -16,10 +16,12 @@ with open('processed_data/crowd_data.csv', 'r') as file:
 	reader = csv.reader(file, delimiter=',')
 	next(reader)
 	for row in reader:
-		human_count.append(int(row[1]))
-		violate_count.append(int(row[2]))
-		restricted_entry.append(bool(int(row[3])))
-		abnormal_activity.append(bool(int(row[4])))
+		if len(row) >= 5:  # Ensure row has expected number of columns
+			human_count.append(int(row[1]))
+			violate_count.append(int(row[2]))
+			restricted_entry.append(bool(int(row[3])))
+			abnormal_activity.append(bool(int(row[4])))
+
 
 with open('processed_data/video_data.json', 'r') as file:
 	data = json.load(file)
@@ -56,4 +58,4 @@ plt.ylabel("Count")
 re_legend = patches.Patch(color= "red", label="Restriced Entry Detected")
 an_legend = patches.Patch(color= "blue", label="Abnormal Crowd Activity Detected")
 plt.legend(handles=[crowd_line, violate_line, re_legend, an_legend])
-plt.show()	
+plt.show()
