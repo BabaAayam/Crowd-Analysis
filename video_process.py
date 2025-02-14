@@ -48,11 +48,12 @@ def video_process(cap, frame_size, net, ln, encoder, tracker, movement_data_writ
 		VID_FPS = None
 		DATA_RECORD_FRAME = 1
 		TIME_STEP = 1
-		t0 = time.time()
 	else:
 		VID_FPS = cap.get(cv2.CAP_PROP_FPS)
+		if VID_FPS == 0:
+			VID_FPS = 30  # Set a default frame rate
 		DATA_RECORD_FRAME = int(VID_FPS / DATA_RECORD_RATE)
-		TIME_STEP = DATA_RECORD_FRAME/VID_FPS
+		TIME_STEP = DATA_RECORD_FRAME / VID_FPS
 
 	frame_count = 0
 	display_frame_count = 0

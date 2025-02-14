@@ -2,7 +2,7 @@ import datetime
 
 # Video Path
 VIDEO_CONFIG = {
-	"VIDEO_CAP" : "video/7.mp4",
+	"VIDEO_CAP" : "1338598-hd_1920_1080_30fps.mp4",
 	"IS_CAM" : False,
 	"CAM_APPROX_FPS": 3,
 	"HIGH_CAM": False,

@@ -93,6 +93,10 @@ else:
 	VID_FPS = cap.get(cv2.CAP_PROP_FPS)
 	DATA_RECORD_FRAME = int(VID_FPS / DATA_RECORD_RATE)
 	START_TIME = VIDEO_CONFIG["START_TIME"]
+	
+	if VID_FPS == 0:
+    		VID_FPS = 30  # Set a default frame rate to avoid division by zero
+	
 	time_elapsed = round(cap.get(cv2.CAP_PROP_FRAME_COUNT) / VID_FPS)
 	END_TIME = START_TIME + datetime.timedelta(seconds=time_elapsed)
 
